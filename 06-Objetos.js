@@ -20,3 +20,11 @@ function imprimirEnMayusculas (persona) {
 function saludo (persona) {
     console.log(`Hola ${persona.nombre}, tengo entendido que tienes ${persona.edad} años`)
 }
+
+function cumpleaños (persona) {
+    return {
+        ...persona,
+        edad: persona.edad + 1
+    }
+    console.log(persona.edad)
+}
