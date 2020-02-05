@@ -1,4 +1,12 @@
 // DECLARAMOS UNA CLASE EN DONDE SE PUEDEN CREAR VARIABLES / USUARIOS CON LOS PARÁMETROS DE NOMBRE Y APELLIDO
+function heredaDe (prototipoHijo, prototipoPadre) {
+    var fn = function () {}
+    fn.prototype = prototipoPadre.prototype
+    prototipoHijo.prototype = new fn
+    prototipoHijo.prototype.constructor = prototipoHijo
+}
+
+
 function Persona (nombre, apellido, edad, altura) {   
     this.nombre = nombre
     this.apellido = apellido
@@ -20,7 +28,21 @@ Persona.prototype.saberAltura = function () {
     }
 }
 
-// VAMOR A CREAR NUEVOS USUARIOS
+
+function Desarrollador (nombre, apellido) {
+    this.nombre = nombre
+    this.apellido = apellido
+}
+
+heredaDe(Desarrollador, Persona)
+
+Desarrollador.prototype.saludar = function () {
+    console.log(`Hola, soy el desarrollador ${this.nombre} ${this.apellido}`)
+}
+
+
+// VAMOR A CREAR NUEVOS USUARIOS PROTOTIPOS, UN OBJETO.
 var miguel = new Persona('Miguel', 'Zabala', 20, 1.70)
+var Miguel = new Desarrollador('Miguel', 'Zabala')
 var alfonso = new Persona('Alfonso', 'Zabala', 53, 1.83)
 var indira = new Persona('Indira', 'Figueroa', 50, 1.59)
